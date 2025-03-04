@@ -76,9 +76,8 @@
     }
     .faq-item button {
       width: 100%;
-      background: #444;
-      color: #fff;
-      border: none;
+      background: transparent;
+      border: 1px solid #fff;
       padding: 15px;
       font-size: 18px;
       text-align: left;
@@ -86,10 +85,11 @@
       border-radius: 5px;
       position: relative;
       overflow: hidden;
-      transition: background 0.3s;
+      transition: background 0.3s, border-color 0.3s;
+      color: #fff;
     }
     .faq-item button:hover {
-      background: #555;
+      background: rgba(255, 255, 255, 0.1);
     }
     .faq-item button::after {
       content: '+';
@@ -99,6 +99,7 @@
       transform: translateY(-50%);
       font-size: 22px;
       transition: transform 0.3s;
+      color: #fff;
     }
     .faq-item button.active::after {
       content: '-';
@@ -106,10 +107,11 @@
     }
     .faq-answer {
       display: none;
-      background-color: #333;
+      background: transparent;
       color: #ccc;
       padding: 15px;
       margin-top: 5px;
+      border: 1px solid #fff;
       border-radius: 5px;
       transition: all 0.3s ease;
     }
@@ -178,7 +180,7 @@
     <div class="faq-item">
       <button onclick="toggleFaq(this, 'faq2')">Como funciona o pagamento por Pix e por cartão (crédito ou débito)?</button>
       <div id="faq2" class="faq-answer">
-        O pagamento é simples, rápido e sem complicação. <br><br>
+        O pagamento é simples, rápido e sem complicação.<br><br>
         <strong>Pix:</strong> O cliente recebe a chave Pix diretamente no WhatsApp junto com o pedido. Basta copiar, pagar e pronto! Pedido confirmado na hora.<br><br>
         <strong>Cartão de crédito ou débito:</strong> Um link de pagamento é enviado no WhatsApp, permitindo que o cliente finalize a compra de forma segura em poucos cliques, sem burocracia. Tudo dentro do WhatsApp!
       </div>
@@ -215,7 +217,7 @@
     <div class="faq-item">
       <button onclick="toggleFaq(this, 'faq7')">Qual é a principal funcionalidade do atendente virtual?</button>
       <div id="faq7" class="faq-answer">
-        O atendente virtual tira dúvidas e fornece informações de forma rápida e eficiente. Em vez de uma troca prolongada de mensagens, ele envia imediatamente o cardápio automático, agilizando o atendimento e evitando sobrecarregar o WhatsApp.
+        O atendente virtual tira dúvidas e fornece informações rapidamente. Em vez de uma troca prolongada de mensagens, ele envia imediatamente o cardápio automático, agilizando o atendimento sem encher o WhatsApp com mensagens desnecessárias.
       </div>
     </div>
     
