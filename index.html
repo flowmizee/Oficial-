@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teste de Imagem</title>
+  <title>Site com Fotos e Vídeo</title>
   <style>
     body {
       margin: 0;
       padding: 20px;
-      background: #050506;
+      background: #050506; /* Fundo preto da página */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -19,9 +19,78 @@
       display: block;
       margin: 0;
     }
+    video {
+      width: 400px;
+      max-width: 100%;
+      display: block;
+      margin: 0;
+    }
+    .btn {
+      background: linear-gradient(45deg, #24A0AA, #1D8283);
+      color: #fff;
+      width: 300px;
+      height: 60px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin: 0;
+    }
+    .btn:hover {
+      background: linear-gradient(45deg, #1D8283, #24A0AA);
+    }
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+      z-index: 1000;
+      font-size: 30px;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
+  <!-- Imagens iniciais -->
   <img src="primeiro.png" alt="Primeira Imagem">
+  <img src="segundo.png" alt="Segunda Imagem">
+  <img src="terceiro.png" alt="Terceira Imagem">
+  
+  <!-- Vídeo -->
+  <video controls>
+    <source src="video.mp4" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+  </video>
+  
+  <!-- Seção de Suporte -->
+  <img src="suporte.png" alt="Foto Suporte">
+  <button class="btn" onclick="window.location.href='https://wa.me/98981729088?text=Estou%20interessado%20no%20Cardápio%20Automático!'">Teste Grátis</button>
+  <img src="fotosuporte.png" alt="Foto Suporte">
+  
+  <!-- Outras seções -->
+  <img src="quinto.png" alt="Quinta Imagem">
+  <button class="btn">Teste Grátis</button>
+  
+  <img src="sexto.png" alt="Sexta Imagem">
+  <button class="btn">Teste Grátis</button>
+  
+  <img src="setimo.png" alt="Sétima Imagem">
+  <button class="btn">Teste Grátis</button>
+  
+  <img src="oitavo.png" alt="Oitava Imagem">
+  
+  <!-- Botão flutuante do WhatsApp com emoji 📞 -->
+  <a href="https://wa.me/SEUNUMERO" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+    📞
+  </a>
 </body>
 </html>
