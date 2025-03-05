@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Meta viewport atualizado para evitar zoom -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Site com Fotos e Vídeo</title>
   <style>
     /* Reset básico */
@@ -16,7 +17,7 @@
       font-family: Arial, sans-serif;
       padding: 20px;
     }
-    /* Componente de Cronômetro fixo e completo no topo, com dimensões reduzidas */
+    /* Componente de Cronômetro fixo no topo com dimensões reduzidas */
     .offer-timer {
       position: fixed;
       top: 0;
@@ -36,9 +37,10 @@
       margin-top: 5px;
       font-size: 24px;
     }
-    /* Wrapper para empurrar o conteúdo para baixo e evitar sobreposição */
+    /* Wrapper para centralizar o conteúdo e empurrá-lo para baixo */
     .content-wrapper {
-      margin-top: 60px; /* Ajuste conforme a altura do cronômetro reduzido */
+      margin: 70px auto 0;
+      max-width: 420px;
     }
     img {
       width: 400px;
@@ -88,11 +90,13 @@
     /* Seção de Perguntas Frequentes */
     .faq-section {
       width: 100%;
-      background-color: #000; /* Fundo preto */
+      max-width: 420px;
+      background-color: #000;
       color: #fff;
       padding: 20px;
-      margin-top: 30px;
+      margin: 30px auto;
       border-radius: 8px;
+      text-align: left;
     }
     .faq-title {
       text-align: center;
@@ -177,13 +181,13 @@
   </script>
 </head>
 <body>
-  <!-- Componente de Cronômetro fixo e completo -->
+  <!-- Componente de Cronômetro fixo -->
   <div class="offer-timer">
     <p><strong>Oferta Limitada! Aproveite Agora!</strong></p>
     <div id="countdown"></div>
   </div>
   
-  <!-- Conteúdo principal (empurrado para baixo para não ficar escondido) -->
+  <!-- Conteúdo principal centralizado -->
   <div class="content-wrapper">
     <!-- Imagens iniciais -->
     <img src="primeiro.png" alt="Primeira Imagem">
@@ -211,9 +215,7 @@
     <img src="oitavo.png" alt="Oitava Imagem">
     
     <!-- Botão flutuante do WhatsApp -->
-    <a href="https://wa.me/98981729088" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
-      📞
-    </a>
+    <a href="https://wa.me/98981729088" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">📞</a>
     
     <!-- Seção de Perguntas Frequentes -->
     <div class="faq-section">
