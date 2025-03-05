@@ -5,37 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Site com Fotos e Vídeo</title>
   <style>
+    /* Estilos globais */
     body {
       margin: 0;
       padding: 20px;
-      background: #050506; /* Fundo preto da página */
+      background: #050506;
       display: flex;
       flex-direction: column;
       align-items: center;
+      font-family: Arial, sans-serif;
     }
     img {
-      width: 400px;
+      width: 100%;
+      max-width: 400px;
       height: auto;
       display: block;
-      margin: 0;
+      margin: 10px 0;
     }
     video {
-      width: 400px;
-      max-width: 100%;
+      width: 100%;
+      max-width: 400px;
       display: block;
-      margin: 0;
+      margin: 10px 0;
     }
     .btn {
       background: linear-gradient(45deg, #24A0AA, #1D8283);
       color: #fff;
-      width: 300px;
+      width: 100%;
+      max-width: 300px;
       height: 60px;
       font-size: 18px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s;
-      margin: 0;
+      margin: 10px 0;
     }
     .btn:hover {
       background: linear-gradient(45deg, #1D8283, #24A0AA);
@@ -60,7 +64,8 @@
     /* Seção de Perguntas Frequentes */
     .faq-section {
       width: 100%;
-      background-color: #000; /* Fundo preto */
+      max-width: 800px;
+      background-color: #000;
       color: #fff;
       padding: 20px;
       margin-top: 30px;
@@ -117,6 +122,52 @@
     }
     .faq-answer.show {
       display: block;
+    }
+    /* Ajustes Responsivos */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      .btn {
+        font-size: 16px;
+        height: 50px;
+      }
+      .faq-title {
+        font-size: 20px;
+      }
+      .faq-item button {
+        font-size: 16px;
+        padding: 10px;
+      }
+      .faq-item button::after {
+        font-size: 20px;
+        right: 10px;
+      }
+      .faq-answer {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+    @media (max-width: 480px) {
+      .btn {
+        font-size: 14px;
+        height: 45px;
+      }
+      .faq-title {
+        font-size: 18px;
+      }
+      .faq-item button {
+        font-size: 14px;
+        padding: 8px;
+      }
+      .faq-item button::after {
+        font-size: 18px;
+        right: 8px;
+      }
+      .faq-answer {
+        font-size: 12px;
+        padding: 8px;
+      }
     }
   </style>
   <script>
@@ -230,4 +281,4 @@
     
   </div>
 </body>
-        </html>
+</html>
