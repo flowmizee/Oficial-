@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Site com Fotos e Vídeo</title>
+  <title>Site com Fotos, Vídeo e Oferta Limitada</title>
   <style>
     /* Estilos globais */
     body {
@@ -60,6 +60,27 @@
       z-index: 1000;
       font-size: 30px;
       color: #fff;
+    }
+    /* Componente de Oferta com Cronômetro */
+    .offer-timer {
+      background-color: #056246;
+      color: #fff;
+      padding: 15px 20px;
+      border-radius: 5px;
+      text-align: center;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+    .offer-timer p {
+      margin: 0;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .offer-timer #countdown {
+      margin-top: 10px;
+      font-size: 24px;
+      font-weight: bold;
     }
     /* Seção de Perguntas Frequentes */
     .faq-section {
@@ -132,6 +153,12 @@
         font-size: 16px;
         height: 50px;
       }
+      .offer-timer p {
+        font-size: 18px;
+      }
+      .offer-timer #countdown {
+        font-size: 20px;
+      }
       .faq-title {
         font-size: 20px;
       }
@@ -153,6 +180,12 @@
         font-size: 14px;
         height: 45px;
       }
+      .offer-timer p {
+        font-size: 16px;
+      }
+      .offer-timer #countdown {
+        font-size: 18px;
+      }
       .faq-title {
         font-size: 18px;
       }
@@ -171,6 +204,7 @@
     }
   </style>
   <script>
+    // Função para alternar as respostas das FAQs
     function toggleFaq(button, answerId) {
       var answer = document.getElementById(answerId);
       if (answer.classList.contains('show')) {
@@ -181,9 +215,37 @@
         button.classList.add('active');
       }
     }
+    
+    // Cronômetro para oferta limitada
+    // Define a data final para a oferta (ex: 1 hora a partir do carregamento da página)
+    var countDownDate = new Date().getTime() + 60 * 60 * 1000;
+
+    // Atualiza o cronômetro a cada 1 segundo
+    var countdownfunction = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      document.getElementById("countdown").innerHTML = hours + "h " 
+      + minutes + "m " + seconds + "s ";
+      
+      if (distance < 0) {
+        clearInterval(countdownfunction);
+        document.getElementById("countdown").innerHTML = "Oferta Expirada";
+      }
+    }, 1000);
   </script>
 </head>
 <body>
+  <!-- Componente de Oferta com Cronômetro -->
+  <div class="offer-timer">
+    <p>Oferta Limitada! Aproveite Agora!</p>
+    <div id="countdown"></div>
+  </div>
+  
   <!-- Imagens iniciais -->
   <img src="primeiro.png" alt="Primeira Imagem">
   <img src="segundo.png" alt="Segunda Imagem">
