@@ -16,7 +16,7 @@
       font-family: Arial, sans-serif;
       padding: 20px;
     }
-    /* Componente de Cronômetro fixo e completo no topo */
+    /* Componente de Cronômetro fixo e completo no topo, com dimensões reduzidas */
     .offer-timer {
       position: fixed;
       top: 0;
@@ -24,21 +24,21 @@
       right: 0;
       background: #056246;
       color: #fff;
-      padding: 15px;
+      padding: 10px;
       text-align: center;
       font-weight: bold;
       z-index: 1001;
     }
     .offer-timer p {
-      font-size: 24px;
+      font-size: 20px;
     }
     .offer-timer #countdown {
-      margin-top: 10px;
-      font-size: 28px;
+      margin-top: 5px;
+      font-size: 24px;
     }
     /* Wrapper para empurrar o conteúdo para baixo e evitar sobreposição */
     .content-wrapper {
-      margin-top: 70px; /* Ajuste conforme a altura do cronômetro */
+      margin-top: 60px; /* Ajuste conforme a altura do cronômetro reduzido */
     }
     img {
       width: 400px;
@@ -88,7 +88,7 @@
     /* Seção de Perguntas Frequentes */
     .faq-section {
       width: 100%;
-      background-color: #000;
+      background-color: #000; /* Fundo preto */
       color: #fff;
       padding: 20px;
       margin-top: 30px;
@@ -167,7 +167,8 @@
       var distance = countDownDate - now;
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      document.getElementById("countdown").innerHTML = minutes + "m " + seconds + "s";
+      // Inclui o emoji ⏳ ao lado dos minutos
+      document.getElementById("countdown").innerHTML = minutes + "m ⏳ " + seconds + "s";
       if (distance < 0) {
         clearInterval(countdownfunction);
         document.getElementById("countdown").innerHTML = "Oferta Expirada";
@@ -178,7 +179,7 @@
 <body>
   <!-- Componente de Cronômetro fixo e completo -->
   <div class="offer-timer">
-    <p><strong>Oferta Limitada! Aproveite Agora! ⌛</strong></p>
+    <p><strong>Oferta Limitada! Aproveite Agora!</strong></p>
     <div id="countdown"></div>
   </div>
   
