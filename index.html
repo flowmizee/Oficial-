@@ -20,7 +20,7 @@
       font-family: Arial, sans-serif;
       padding: 20px;
     }
-    /* Componente de Cronômetro fixo no topo (diminuído) */
+    /* Componente de Cronômetro fixo no topo (texto maior e sem negrito) */
     .offer-timer {
       position: fixed;
       top: 0;
@@ -30,15 +30,15 @@
       color: #fff;
       padding: 8px;
       text-align: center;
-      font-weight: bold;
+      font-weight: normal;
       z-index: 1001;
     }
     .offer-timer p {
-      font-size: 16px; /* Reduzido de 26px para 16px */
+      font-size: 20px; /* Aumentado um pouco */
     }
     .offer-timer #countdown {
       margin-top: 4px;
-      font-size: 18px; /* Reduzido de 30px para 18px */
+      font-size: 22px; /* Aumentado um pouco */
     }
     /* Wrapper para centralizar o conteúdo e empurrá-lo para baixo */
     .content-wrapper {
@@ -188,7 +188,7 @@
 <body>
   <!-- Componente de Cronômetro fixo -->
   <div class="offer-timer">
-    <p><strong>Oferta Limitada! Aproveite Agora!</strong></p>
+    <p>Oferta Limitada! Aproveite Agora!</p>
     <div id="countdown"></div>
   </div>
   
