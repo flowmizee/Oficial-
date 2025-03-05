@@ -20,7 +20,7 @@
       font-family: Arial, sans-serif;
       padding: 20px;
     }
-    /* Componente de Cronômetro fixo no topo (texto em negrito e um pouquinho maior) */
+    /* Componente de Cronômetro fixo no topo (menor e com texto unificado) */
     .offer-timer {
       position: fixed;
       top: 0;
@@ -28,17 +28,18 @@
       right: 0;
       background: #056246;
       color: #fff;
-      padding: 8px;
+      padding: 4px;  /* Componente menor */
       text-align: center;
       font-weight: bold;
       z-index: 1001;
     }
-    .offer-timer p {
-      font-size: 20px; /* Texto um pouco maior */
+    .offer-timer p,
+    .offer-timer #countdown {
+      font-size: 20px; /* Texto unificado para ambos */
+      margin: 0; /* Remove margens para manter o componente compacto */
     }
     .offer-timer #countdown {
-      margin-top: 4px;
-      font-size: 18px;
+      margin-top: 2px; /* Pequeno espaçamento entre o título e o cronômetro */
     }
     /* Wrapper para centralizar o conteúdo e empurrá-lo para baixo */
     .content-wrapper {
