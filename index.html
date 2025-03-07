@@ -247,22 +247,7 @@
       }
     }, 1000);
     
-    // Autoplay do vídeo com volume normal quando estiver visível
-    document.addEventListener("DOMContentLoaded", function() {
-      var video = document.getElementById("myVideo");
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.intersectionRatio > 0) {
-            video.play().catch(function(err) {
-              console.log("Erro ao reproduzir o vídeo: ", err);
-            });
-          } else {
-            video.pause();
-          }
-        });
-      }, { threshold: 0 });
-      observer.observe(video);
-    });
+    // (Autoplay removido conforme solicitado para manter o vídeo parado e exibir o poster)
     
     // Ripple effect e movimento para botões de Teste Grátis
     document.addEventListener("DOMContentLoaded", function() {
@@ -311,8 +296,8 @@
     <!-- Imagem de Aviso -->
     <img src="aviso.png" alt="Aviso">
     
-    <!-- Vídeo com autoplay via IntersectionObserver -->
-    <video id="myVideo" controls playsinline preload="auto">
+    <!-- Vídeo com poster para exibir imagem em 1:00 -->
+    <video id="myVideo" controls playsinline preload="auto" poster="1min.png">
       <source src="video.mp4" type="video/mp4">
       Seu navegador não suporta o elemento de vídeo.
     </video>
@@ -413,4 +398,4 @@
     
   </div>
 </body>
-  </html>
+</html>
