@@ -60,6 +60,12 @@
       display: block;
       margin: 0 auto;
     }
+    /* Animação pulse para os botões de Teste Grátis */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
     .btn {
       background: linear-gradient(45deg, #24A0AA, #1D8283);
       color: #fff;
@@ -72,6 +78,7 @@
       transition: background 0.3s;
       display: block;
       margin: 20px auto;
+      animation: pulse 2s infinite;
     }
     .btn:hover {
       background: linear-gradient(45deg, #1D8283, #24A0AA);
@@ -225,6 +232,21 @@
         document.getElementById("countdown").innerHTML = "Oferta Expirada";
       }
     }, 1000);
+
+    // Autoplay do vídeo quando estiver visível
+    document.addEventListener("DOMContentLoaded", function() {
+      const video = document.getElementById("myVideo");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(video);
+    });
   </script>
 </head>
 <body>
@@ -244,8 +266,8 @@
     <!-- Nova imagem "aviso.png" antes do vídeo -->
     <img src="aviso.png" alt="Aviso">
     
-    <!-- Vídeo -->
-    <video controls>
+    <!-- Vídeo com autoplay (muted e playsinline para compatibilidade) -->
+    <video id="myVideo" controls muted playsinline preload="auto">
       <source src="video.mp4" type="video/mp4">
       Seu navegador não suporta o elemento de vídeo.
     </video>
@@ -263,7 +285,7 @@
     <img src="setimo.png" alt="Sétima Imagem">
     <button class="btn" onclick="window.location.href='https://pay.kiwify.com.br/kvykoBM'">Teste Grátis</button>
     
-    <!-- Foto "oitavo.png" com botões invisíveis ajustados -->
+    <!-- Foto "oitavo.png" com botões invisíveis ajustados (links atualizados) -->
     <div class="photo-container">
       <img src="oitavo.png" alt="Oitava Imagem">
       <a href="https://pay.kiwify.com.br/7bJq4TB" class="invisible-button button-top"></a>
@@ -344,4 +366,4 @@
     
   </div>
 </body>
-</html>
+  </html>
