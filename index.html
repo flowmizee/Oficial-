@@ -184,7 +184,6 @@
       var distance = countDownDate - now;
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      // O emoji ⏳ é posicionado ao lado dos segundos
       document.getElementById("countdown").innerHTML = minutes + "m " + seconds + "s ⏳";
       if (distance < 0) {
         clearInterval(countdownfunction);
@@ -297,9 +296,8 @@
       
     </div>
     
-    <!-- Nova imagem de Flowmize e direitos reservados -->
-    <img src="flowmize.png" alt="Flowmize">
-    <p class="footer">© Flowmize - Todos os direitos reservados</p>
+    <!-- Direitos Reservados -->
+    <p class="footer">© 2025 Flowmize. Todos os direitos reservados.</p>
     
   </div>
 </body>
