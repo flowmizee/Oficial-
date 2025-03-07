@@ -60,7 +60,17 @@
       display: block;
       margin: 0 auto;
     }
-    /* Botões Teste Grátis com efeito ripple e movimento ao clicar */
+    /* Botões Teste Grátis com efeito ripple, movimento ao clicar e flutuação */
+    @keyframes float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+    @keyframes btn-click-move {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
     .btn {
       position: relative;
       overflow: hidden;
@@ -75,6 +85,7 @@
       transition: background 0.3s;
       display: block;
       margin: 20px auto;
+      animation: float 3s ease-in-out infinite;
     }
     .btn:hover {
       background: linear-gradient(45deg, #1D8283, #24A0AA);
@@ -90,15 +101,11 @@
     @keyframes ripple-animation {
       to { transform: scale(4); opacity: 0; }
     }
-    /* Movimento do botão ao ser clicado */
-    @keyframes btn-click-move {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-      100% { transform: translateY(0); }
-    }
     .btn.clicked {
-      animation: btn-click-move 300ms;
+      /* Junta a animação de flutuação com o efeito de clique */
+      animation: float 3s ease-in-out infinite, btn-click-move 300ms;
     }
+    /* Botão flutuante do WhatsApp */
     .whatsapp-btn {
       position: fixed;
       bottom: 20px;
@@ -253,7 +260,6 @@
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
-            // Tenta reproduzir o vídeo; se for bloqueado, exibe o erro no console
             video.play().catch(function(err) {
               console.log("Autoplay com som pode estar bloqueado: ", err);
             });
@@ -261,7 +267,7 @@
             video.pause();
           }
         });
-      }, { threshold: 0.1 }); // Ajustado para reproduzir assim que parte do vídeo for visível
+      }, { threshold: 0.1 });
       observer.observe(video);
     });
     
