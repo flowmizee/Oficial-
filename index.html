@@ -20,7 +20,7 @@
       font-family: Arial, sans-serif;
       padding: 20px;
     }
-    /* Componente de Cronômetro fixo no topo (menor e com texto unificado) */
+    /* Componente de Cronômetro fixo no topo */
     .offer-timer {
       position: fixed;
       top: 0;
@@ -41,7 +41,7 @@
     .offer-timer #countdown {
       margin-top: 2px;
     }
-    /* Wrapper para centralizar o conteúdo e empurrá-lo para baixo */
+    /* Conteúdo centralizado */
     .content-wrapper {
       margin: 70px auto 0;
       max-width: 420px;
@@ -60,7 +60,7 @@
       display: block;
       margin: 0 auto;
     }
-    /* Estilo para os botões "Teste Grátis" com efeito ripple */
+    /* Botões Teste Grátis com efeito ripple */
     .btn {
       position: relative;
       overflow: hidden;
@@ -79,11 +79,10 @@
     .btn:hover {
       background: linear-gradient(45deg, #1D8283, #24A0AA);
     }
-    /* Ripple effect */
     .ripple {
       position: absolute;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255,255,255,0.7);
       transform: scale(0);
       animation: ripple-animation 600ms linear;
       pointer-events: none;
@@ -142,7 +141,7 @@
       color: #fff;
     }
     .faq-item button:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.1);
     }
     .faq-item button::after {
       content: '+';
@@ -171,20 +170,19 @@
     .faq-answer.show {
       display: block;
     }
-    /* Linha horizontal para dividir o conteúdo dos direitos reservados */
+    /* Linha horizontal e direitos reservados */
     .footer-divider {
       border: 0;
       height: 1px;
       background: #ccc;
       margin: 30px 0 10px;
     }
-    /* Direitos reservados */
     .footer {
       text-align: center;
       color: #ccc;
       font-size: 12px;
     }
-    /* Estilo para a foto com botões invisíveis */
+    /* Foto com botões invisíveis */
     .photo-container {
       position: relative;
       display: inline-block;
@@ -197,7 +195,6 @@
       z-index: 2;
       opacity: 0;
     }
-    /* Botões invisíveis ajustados: menores e reposicionados */
     .button-top {
       top: 10%;
       width: 60%;
@@ -215,7 +212,7 @@
     }
   </style>
   <script>
-    // Função para alternar a exibição das FAQs
+    // Alterna exibição das FAQs
     function toggleFaq(button, answerId) {
       var answer = document.getElementById(answerId);
       if (answer.classList.contains('show')) {
@@ -227,7 +224,7 @@
       }
     }
     
-    // Cronômetro para oferta limitada: 10 minutos a partir do carregamento da página
+    // Cronômetro: 10 minutos a partir do carregamento
     var countDownDate = new Date().getTime() + 10 * 60 * 1000;
     var countdownfunction = setInterval(function() {
       var now = new Date().getTime();
@@ -247,7 +244,10 @@
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
-            video.play();
+            // Tenta reproduzir o vídeo; se for bloqueado, exibe o erro no console
+            video.play().catch(function(err) {
+              console.log("Autoplay com som pode estar bloqueado: ", err);
+            });
           } else {
             video.pause();
           }
@@ -256,22 +256,19 @@
       observer.observe(video);
     });
     
-    // Ripple effect para os botões de Teste Grátis
+    // Ripple effect para botões de Teste Grátis
     document.addEventListener("DOMContentLoaded", function() {
       var buttons = document.querySelectorAll(".btn");
       buttons.forEach(function(btn) {
         btn.addEventListener("click", function(e) {
-          // Cria o elemento ripple
           var ripple = document.createElement("span");
           ripple.classList.add("ripple");
-          // Pega a posição do click relativa ao botão
           var rect = btn.getBoundingClientRect();
           var size = Math.max(rect.width, rect.height);
           ripple.style.width = ripple.style.height = size + "px";
-          ripple.style.left = e.clientX - rect.left - size / 2 + "px";
-          ripple.style.top = e.clientY - rect.top - size / 2 + "px";
+          ripple.style.left = e.clientX - rect.left - size/2 + "px";
+          ripple.style.top = e.clientY - rect.top - size/2 + "px";
           btn.appendChild(ripple);
-          // Remove o ripple depois da animação
           ripple.addEventListener("animationend", function() {
             ripple.parentElement.removeChild(ripple);
           });
@@ -281,23 +278,23 @@
   </script>
 </head>
 <body>
-  <!-- Componente de Cronômetro fixo -->
+  <!-- Cronômetro fixo -->
   <div class="offer-timer">
     <p>OFERTA LIMITADA! APROVEITE AGORA!</p>
     <div id="countdown"></div>
   </div>
   
-  <!-- Conteúdo principal centralizado -->
+  <!-- Conteúdo principal -->
   <div class="content-wrapper">
     <!-- Imagens iniciais -->
     <img src="primeiro.png" alt="Primeira Imagem">
     <img src="segundo.png" alt="Segunda Imagem">
     <img src="terceiro.png" alt="Terceira Imagem">
     
-    <!-- Nova imagem "aviso.png" antes do vídeo -->
+    <!-- Imagem de Aviso -->
     <img src="aviso.png" alt="Aviso">
     
-    <!-- Vídeo com autoplay (volume normal) -->
+    <!-- Vídeo com autoplay via IntersectionObserver -->
     <video id="myVideo" controls playsinline preload="auto">
       <source src="video.mp4" type="video/mp4">
       Seu navegador não suporta o elemento de vídeo.
@@ -308,15 +305,17 @@
     <button class="btn" onclick="window.location.href='https://wa.me/98981729088?text=Estou%20interessado%20no%20Cardápio%20Automático!'">Teste Grátis</button>
     <img src="fotosuporte.png" alt="Foto Suporte">
     
-    <!-- Outras seções -->
+    <!-- Outras seções com botões de Teste Grátis -->
     <img src="quinto.png" alt="Quinta Imagem">
     <button class="btn" onclick="window.location.href='https://pay.kiwify.com.br/7bJq4TB'">Teste Grátis</button>
+    
     <img src="sexto.png" alt="Sexta Imagem">
     <button class="btn" onclick="window.location.href='https://pay.kiwify.com.br/6D8338O'">Teste Grátis</button>
+    
     <img src="setimo.png" alt="Sétima Imagem">
     <button class="btn" onclick="window.location.href='https://pay.kiwify.com.br/kvykoBM'">Teste Grátis</button>
     
-    <!-- Foto "oitavo.png" com botões invisíveis ajustados (links atualizados) -->
+    <!-- Foto "oitavo.png" com botões invisíveis -->
     <div class="photo-container">
       <img src="oitavo.png" alt="Oitava Imagem">
       <a href="https://pay.kiwify.com.br/7bJq4TB" class="invisible-button button-top"></a>
@@ -327,7 +326,7 @@
     <!-- Botão flutuante do WhatsApp -->
     <a href="https://wa.me/98981729088" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">📞</a>
     
-    <!-- Seção de Perguntas Frequentes -->
+    <!-- Seção de FAQs -->
     <div class="faq-section">
       <div class="faq-title">Perguntas Frequentes</div>
       
