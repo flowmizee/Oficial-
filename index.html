@@ -60,7 +60,7 @@
       display: block;
       margin: 0 auto;
     }
-    /* Botões Teste Grátis com efeito ripple e movimento ao clicar */
+    /* Botões Teste Grátis com efeito ripple */
     .btn {
       position: relative;
       overflow: hidden;
@@ -89,15 +89,6 @@
     }
     @keyframes ripple-animation {
       to { transform: scale(4); opacity: 0; }
-    }
-    /* Movimento do botão ao ser clicado */
-    @keyframes btn-click-move {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-      100% { transform: translateY(0); }
-    }
-    .btn.clicked {
-      animation: btn-click-move 300ms;
     }
     .whatsapp-btn {
       position: fixed;
@@ -232,7 +223,6 @@
         button.classList.add('active');
       }
     }
-    
     // Cronômetro: 10 minutos a partir do carregamento
     var countDownDate = new Date().getTime() + 10 * 60 * 1000;
     var countdownfunction = setInterval(function() {
@@ -246,15 +236,28 @@
         document.getElementById("countdown").innerHTML = "Oferta Expirada";
       }
     }, 1000);
-    
-    // (Autoplay removido conforme solicitado para manter o vídeo parado e exibir o poster)
-    
-    // Ripple effect e movimento para botões de Teste Grátis
+    // Autoplay do vídeo com volume normal quando estiver visível
+    document.addEventListener("DOMContentLoaded", function() {
+      var video = document.getElementById("myVideo");
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            // Tenta reproduzir o vídeo; se for bloqueado, exibe o erro no console
+            video.play().catch(function(err) {
+              console.log("Autoplay com som pode estar bloqueado: ", err);
+            });
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(video);
+    });
+    // Ripple effect para botões de Teste Grátis
     document.addEventListener("DOMContentLoaded", function() {
       var buttons = document.querySelectorAll(".btn");
       buttons.forEach(function(btn) {
         btn.addEventListener("click", function(e) {
-          // Ripple effect
           var ripple = document.createElement("span");
           ripple.classList.add("ripple");
           var rect = btn.getBoundingClientRect();
@@ -266,14 +269,6 @@
           ripple.addEventListener("animationend", function() {
             ripple.parentElement.removeChild(ripple);
           });
-          // Adiciona classe para movimento do botão
-          btn.classList.add("clicked");
-        });
-        // Remove a classe "clicked" após a animação de movimento terminar
-        btn.addEventListener("animationend", function(e) {
-          if(e.animationName === "btn-click-move") {
-            btn.classList.remove("clicked");
-          }
         });
       });
     });
@@ -285,38 +280,30 @@
     <p>OFERTA LIMITADA! APROVEITE AGORA!</p>
     <div id="countdown"></div>
   </div>
-  
   <!-- Conteúdo principal -->
   <div class="content-wrapper">
     <!-- Imagens iniciais -->
     <img src="primeiro.png" alt="Primeira Imagem">
     <img src="segundo.png" alt="Segunda Imagem">
     <img src="terceiro.png" alt="Terceira Imagem">
-    
     <!-- Imagem de Aviso -->
     <img src="aviso.png" alt="Aviso">
-    
-    <!-- Vídeo com poster exibindo imagem do 1:00 -->
-    <video id="myVideo" controls playsinline preload="auto" poster="1min.png">
+    <!-- Vídeo com autoplay via IntersectionObserver -->
+    <video id="myVideo" controls playsinline preload="auto">
       <source src="video.mp4" type="video/mp4">
       Seu navegador não suporta o elemento de vídeo.
     </video>
-    
     <!-- Seção de Suporte -->
     <img src="suporte.png" alt="Foto Suporte">
     <button class="btn" onclick="window.location.href='https://wa.me/98981729088?text=Estou%20interessado%20no%20Cardápio%20Automático!'">Teste Grátis</button>
     <img src="fotosuporte.png" alt="Foto Suporte">
-    
     <!-- Outras seções com botões de Teste Grátis -->
     <img src="quinto.png" alt="Quinta Imagem">
     <button class="btn" onclick="window.location.href='https://pay.kiwify.com.br/7bJq4TB'">Teste Grátis</button>
-    
     <img src="sexto.png" alt="Sexta Imagem">
     <button class="btn" onclick="window.location.href='https://pay.kiwify.com.br/6D8338O'">Teste Grátis</button>
-    
     <img src="setimo.png" alt="Sétima Imagem">
     <button class="btn" onclick="window.location.href='https://pay.kiwify.com.br/kvykoBM'">Teste Grátis</button>
-    
     <!-- Foto "oitavo.png" com botões invisíveis -->
     <div class="photo-container">
       <img src="oitavo.png" alt="Oitava Imagem">
@@ -324,21 +311,17 @@
       <a href="https://pay.kiwify.com.br/6D8338O" class="invisible-button button-middle"></a>
       <a href="https://pay.kiwify.com.br/kvykoBM" class="invisible-button button-bottom"></a>
     </div>
-    
     <!-- Botão flutuante do WhatsApp -->
     <a href="https://wa.me/98981729088" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">📞</a>
-    
     <!-- Seção de FAQs -->
     <div class="faq-section">
       <div class="faq-title">Perguntas Frequentes</div>
-      
       <div class="faq-item">
         <button onclick="toggleFaq(this, 'faq1')">O sistema funciona mesmo para quem muda de cardápio com frequência?</button>
         <div id="faq1" class="faq-answer">
           Sim, o sistema é totalmente flexível. Você pode atualizar o cardápio a qualquer momento, incluindo novos itens, ajustar preços ou mudar as opções. As alterações são feitas de forma simples e rápida.
         </div>
       </div>
-      
       <div class="faq-item">
         <button onclick="toggleFaq(this, 'faq2')">Como funciona o pagamento por Pix e por cartão (crédito ou débito)?</button>
         <div id="faq2" class="faq-answer">
@@ -347,55 +330,47 @@
           <strong>Cartão de crédito ou débito:</strong> Um link de pagamento é enviado no WhatsApp, permitindo que o cliente finalize a compra de forma segura em poucos cliques, sem burocracia. Tudo dentro do WhatsApp!
         </div>
       </div>
-      
       <div class="faq-item">
         <button onclick="toggleFaq(this, 'faq3')">O sistema possui relatórios de vendas?</button>
         <div id="faq3" class="faq-answer">
           Não, o sistema é focado na automação de pedidos e pagamentos pelo WhatsApp. Ele agiliza o atendimento enviando o cardápio, calculando os valores automaticamente e facilitando o pagamento via Pix ou cartão, mas não gera relatórios de vendas.
         </div>
       </div>
-      
       <div class="faq-item">
         <button onclick="toggleFaq(this, 'faq4')">Por que o sistema não exige login?</button>
         <div id="faq4" class="faq-answer">
           O sistema não exige login para tornar o processo mais rápido e simples. A finalização da compra é feita diretamente no WhatsApp, com pagamento seguro via link ou chave Pix, garantindo que não haja erros ou pedidos falsos.
         </div>
       </div>
-      
       <div class="faq-item">
         <button onclick="toggleFaq(this, 'faq5')">Para que serve o disparador de mensagens?</button>
         <div id="faq5" class="faq-answer">
           O disparador de mensagens envia rapidamente o cardápio ou outras informações para até 5.000 clientes por dia no WhatsApp, mesmo que o número do seu estabelecimento não esteja salvo. Ideal para divulgar novidades, promoções ou atualizações.
         </div>
       </div>
-      
       <div class="faq-item">
         <button onclick="toggleFaq(this, 'faq6')">Existe risco de banimento no WhatsApp ao usar o nosso sistema?</button>
         <div id="faq6" class="faq-answer">
           Não, nosso sistema foi projetado para seguir todas as diretrizes do WhatsApp. Com o envio limitado a 5.000 mensagens por dia, o risco de banimento é praticamente inexistente.
         </div>
       </div>
-      
       <div class="faq-item">
         <button onclick="toggleFaq(this, 'faq7')">Qual é a principal funcionalidade do atendente virtual?</button>
         <div id="faq7" class="faq-answer">
           O atendente virtual tira dúvidas e fornece informações rapidamente. Em vez de uma troca prolongada de mensagens, ele envia imediatamente o cardápio automático, agilizando o atendimento sem encher o WhatsApp com mensagens desnecessárias.
         </div>
       </div>
-      
       <div class="faq-item">
         <button onclick="toggleFaq(this, 'faq8')">O sistema cobra alguma taxa adicional além do valor do plano?</button>
         <div id="faq8" class="faq-answer">
           Não, nossos planos são 100% transparentes. Você paga apenas o valor do plano escolhido, sem taxas extras ou surpresas.
         </div>
       </div>
-      
     </div>
-    
     <!-- Linha divisória e Direitos Reservados -->
     <hr class="footer-divider">
     <p class="footer">© 2025 Flowmize. Todos os direitos reservados.</p>
-    
   </div>
 </body>
-</html>
+        </html>
+          
