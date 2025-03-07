@@ -169,6 +169,31 @@
       color: #ccc;
       font-size: 12px;
     }
+    /* Estilo para a foto com botões invisíveis */
+    .photo-container {
+      position: relative;
+      display: inline-block;
+    }
+    .invisible-button {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 20%;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+    /* Posicionamento vertical dos botões */
+    .button-top {
+      top: 10%;
+    }
+    .button-middle {
+      top: 45%;
+    }
+    .button-bottom {
+      top: 80%;
+    }
   </style>
   <script>
     // Função para alternar a exibição das FAQs
@@ -233,7 +258,14 @@
     <button class="btn" onclick="window.location.href='https://pay.kiwify.com.br/Crccd9e'">Teste Grátis</button>
     <img src="setimo.png" alt="Sétima Imagem">
     <button class="btn" onclick="window.location.href='https://pay.kiwify.com.br/0NdSoY6'">Teste Grátis</button>
-    <img src="oitavo.png" alt="Oitava Imagem">
+    
+    <!-- Foto "oitavo.png" com botões invisíveis -->
+    <div class="photo-container">
+      <img src="oitavo.png" alt="Oitava Imagem">
+      <a href="https://pay.kiwify.com.br/KzscU86" class="invisible-button button-top"></a>
+      <a href="https://pay.kiwify.com.br/Crccd9e" class="invisible-button button-middle"></a>
+      <a href="https://pay.kiwify.com.br/0NdSoY6" class="invisible-button button-bottom"></a>
+    </div>
     
     <!-- Botão flutuante do WhatsApp -->
     <a href="https://wa.me/98981729088" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">📞</a>
@@ -302,9 +334,8 @@
       
     </div>
     
-    <!-- Linha divisória acima dos direitos reservados -->
+    <!-- Linha divisória e Direitos Reservados -->
     <hr class="footer-divider">
-    <!-- Direitos Reservados -->
     <p class="footer">© 2025 Flowmize. Todos os direitos reservados.</p>
     
   </div>
